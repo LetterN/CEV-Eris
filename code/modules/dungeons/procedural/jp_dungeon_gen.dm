@@ -560,14 +560,6 @@
 
 	var/timer = world.timeofday
 
-	if(seed==null)
-		out_seed = rand(-65535, 65535)
-		rand_seed(out_seed)
-	else
-		out_seed = seed
-		rand_seed(seed)
-
-
 	z = corner1.z
 	minx = min(corner1.x, corner2.x) + roomMaxSize + 1
 	maxx = max(corner1.x, corner2.x) - roomMaxSize - 1
@@ -701,7 +693,6 @@
 	out_rooms = rooms
 	out_region = region1
 	out_numRooms = out_rooms.len
-	rand_seed(tempseed)
 
 
 
