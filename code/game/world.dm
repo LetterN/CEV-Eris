@@ -74,12 +74,13 @@ var/game_id
  * All atoms in both compiled and uncompiled maps are initialized()
  */
 /world/New()
-	//enable the debugger for VSC
-	enable_auxtools_debugger()
+
 	//logs
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
+
 	href_logfile = file("data/logs/[date_string] hrefs.htm")
 	diary = file("data/logs/[date_string].log")
+
 	diary << "[log_end]\n[log_end]\nStarting up. (ID: [game_id]) [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
 
@@ -114,7 +115,7 @@ var/game_id
 	if(NO_INIT_PARAMETER in params)
 		return
 
-	Master.Initialize(10, FALSE)
+	Master.Initialize(10, FALSE, TRUE)
 
 	call_restart_webhook()
 
@@ -397,7 +398,3 @@ proc/establish_db_connection()
 		return //No change required.
 
 	fps = new_value
-
-/world/Del()
-	disable_auxtools_debugger() //If we dont do this, we get phantom threads which can crash DD from memory access violations
-	..()
