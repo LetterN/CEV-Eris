@@ -539,7 +539,7 @@
 	out_numPaths = 0
 	out_numLongPaths = 0
 
-	var/tempseed = rand(-65535, 65535)
+	// var/tempseed = rand(-65535, 65535)
 	var/numits
 	var/paths
 	var/obj/procedural/jp_DungeonRoomEntry/nextentry
